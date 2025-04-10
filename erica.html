@@ -30,11 +30,14 @@
       font-weight: bold;
     }
 
-    /* Main Content */
+    /* Profile Section */
     .profile {
+      margin-top: 40px;
+    }
+
+    .profile-top {
       display: flex;
       align-items: center;
-      margin-top: 40px;
     }
 
     .profile-img {
@@ -67,11 +70,37 @@
     .description {
       display: none;
       margin-top: 10px;
-      max-width: 400px;
+      width: 100%;
+      max-width: 800px; /* <== BATASIN LEBARNYA */
       background-color: #f8f8f8;
       padding: 10px;
       border-radius: 6px;
       border: 1px solid #ddd;
+      word-wrap: break-word; /* jaga-jaga biar teks panjang tetap rapi */
+    }
+
+    /* Profile Links */
+    .profile-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .link-item {
+      width: 45%;
+      text-align: center;
+    }
+
+    .profile-links img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-links img:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -86,20 +115,47 @@
 
   <!-- Profile Section -->
   <div class="profile">
-    <img src="foto profile.jpeg" alt="Foto Profil" class="profile-img">
-    <div class="profile-info">
-      <div class="name">Erica Aurelia Susanto </div>
-      <button class="desc-button" onclick="toggleDescription()">Show Description</button>
-      <div class="description" id="description">
-           Pengalaman saya selama tiga tahun bersekolah di SMK sangatlah beragam, banyak sekali naik dan turun yang dirasakan banyak kesan yang berada di benak saya sehinga tidak dapat di tulis dalam sebuah kalimat
+    
+    <!-- Top Row: Foto & Nama + Button -->
+    <div class="profile-top">
+      <img src="memetsa.jpg" alt="Foto Profil" class="profile-img">
+      <div class="profile-info">
+        <div class="name">Erica Aurelia Susanto</div>
+        <button class="desc-button" onclick="toggleDescription()" id="descBtn">Show Description</button>
+        <div class="description" id="description">
+            Pengalaman saya selama tiga tahun bersekolah di SMK sangatlah beragam, banyak sekali naik dan turun yang dirasakan banyak kesan yang berada di benak saya sehinga tidak dapat di tulis dalam sebuah kalimat.
+        </div>
       </div>
     </div>
+
+    <!-- Deskripsi -->
+
+    <!-- Profile Links Selalu Tampil -->
+    <div class="profile-links">
+      <div class="link-item">
+        <a href="vanessa.html" target="_blank">
+          <img src="Nah I'd win.jpeg" alt="Profile 1">
+        </a>
+        <p class="profile-name">Vanessa Ivana</p>
+      </div>
+      <div class="link-item">
+        <a href="index.html" target="_blank">
+          <img src="foto profile.jpeg" alt="Profile 2">
+        </a>
+        <p class="profile-name">Anastashia Putri Christiawan</p>
+      </div>
+    </div>
+
   </div>
 
   <script>
     function toggleDescription() {
       const desc = document.getElementById('description');
-      desc.style.display = desc.style.display === 'none' || desc.style.display === '' ? 'block' : 'none';
+      const btn = document.getElementById('descBtn');
+      const isHidden = desc.style.display === 'none' || desc.style.display === '';
+
+      desc.style.display = isHidden ? 'block' : 'none';
+      btn.innerText = isHidden ? 'Hide Description' : 'Show Description';
     }
   </script>
 
